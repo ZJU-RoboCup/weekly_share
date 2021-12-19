@@ -82,14 +82,14 @@ jobs:
           pwd
 
       - name: Upload
-        if: github.event_name == 'release'
+        if: github.event_name == 'release' && (github.event.action == 'created')
         uses: actions/upload-artifact@v1
         with:
           path: ./${{ matrix.config.artifact }}
           name: ${{ matrix.config.artifact }}
 
       - name: Upload release asset
-        if: github.event_name == 'release' && (github.event.action == 'published' || github.event.action == 'created')
+        if: github.event_name == 'release' && (github.event.action == 'created')
         uses: actions/upload-release-asset@v1
         env:
           GITHUB_TOKEN: ${{ secrets.MY_GITHUB_TOKEN }}
