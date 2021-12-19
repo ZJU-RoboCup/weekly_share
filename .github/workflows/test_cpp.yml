@@ -81,6 +81,7 @@ jobs:
           ${{ matrix.config.archiver }} ../${{ matrix.config.artifact }} .
 
       - name: Upload
+        if: github.event_name == 'release'
         uses: actions/upload-artifact@v1
         with:
           path: ./${{ matrix.config.artifact }}
