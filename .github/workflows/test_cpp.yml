@@ -71,7 +71,7 @@ jobs:
 
       - name: Install Strip
         shell: bash
-        run: cmake --install . --strip
+        run: cmake --install build --strip
 
       - name: Pack
         shell: bash
