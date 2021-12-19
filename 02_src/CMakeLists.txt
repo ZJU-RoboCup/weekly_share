@@ -18,7 +18,7 @@ add_library(${CMAKE_PROJECT_NAME} SHARED
     ${SOURCE_FILES}
 )
 target_link_libraries(${CMAKE_PROJECT_NAME} ${LIBS})
-
+install(TARGETS ${CMAKE_PROJECT_NAME})
 #####################################################
 
 project(main LANGUAGES CXX)
@@ -30,3 +30,4 @@ add_executable(${CMAKE_PROJECT_NAME}
     ${SOURCE_FILES}
 )
 target_link_libraries(${CMAKE_PROJECT_NAME} ${LIBS})
+install(TARGETS ${CMAKE_PROJECT_NAME})
