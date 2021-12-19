@@ -77,8 +77,9 @@ jobs:
         shell: bash
         working-directory: instdir
         run: |
-          ls -laR
           ${{ matrix.config.archiver }} ../${{ matrix.config.artifact }} .
+          ls -laR
+          pwd
 
       - name: Upload
         if: github.event_name == 'release'
@@ -95,5 +96,5 @@ jobs:
         with:
           upload_url: ${{ github.event.release.upload_url }}
           asset_path: ./${{ matrix.config.artifact }}
-          asset_name: ${{ matrix.config.artifact }}.zip
+          asset_name: ${{ matrix.config.artifact }}
           asset_content_type: application/zip
