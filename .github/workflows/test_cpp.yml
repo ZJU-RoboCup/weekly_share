@@ -27,6 +27,7 @@ jobs:
             generators: "Visual Studio 16 2019"
           }
     name: build
+    runs-on: ${{ matrix.config.os }}
     steps:
       - name: checkout
         uses: actions/checkout@v2
@@ -89,7 +90,7 @@ jobs:
         if: github.event_name == 'release' && (github.event.action == 'published' || github.event.action == 'created')
         uses: actions/upload-release-asset@v1
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.MY_GITHUB_TOKEN }}
         with:
           upload_url: ${{ github.event.release.upload_url }}
           asset_path: ./${{ matrix.config.artifact }}
